@@ -5,24 +5,9 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Image,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-
-function ListLogo() {
-  return (
-    <View style={styles.logoRow}>
-      <View style={styles.logoIconWrap}>
-        <View style={styles.logoBars}>
-          <View style={[styles.bar, styles.bar1]} />
-          <View style={[styles.bar, styles.bar2]} />
-          <View style={[styles.bar, styles.bar3]} />
-        </View>
-        <Text style={styles.checkmark}>✓</Text>
-      </View>
-      <Text style={styles.logoText}>MyList</Text>
-    </View>
-  );
-}
 
 export default function App() {
   const [task, setTask] = useState('');
@@ -43,7 +28,13 @@ export default function App() {
           </View>
         </View>
 
-        <ListLogo />
+        <View style={styles.logoRow}>
+          <Image
+            source={require('./assets/Playlist add check.png')}
+            style={styles.logoIcon}
+          />
+          <Text style={styles.logoText}>MyList</Text>
+        </View>
 
         <View style={styles.inputRow}>
           <TextInput
@@ -134,33 +125,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 30,
     marginBottom: 28,
+    gap: 8,
   },
-  logoIconWrap: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: 10,
-  },
-  logoBars: {
-    width: 40,
-    height: 28,
-    justifyContent: 'center',
-    gap: 3,
-    marginRight: 2,
-  },
-  bar: {
-    height: 4,
-    borderRadius: 2,
-    backgroundColor: '#00d4ff',
-  },
-  bar1: { width: 34 },
-  bar2: { width: 28 },
-  bar3: { width: 22 },
-  checkmark: {
-    color: '#00d4ff',
-    fontSize: 32,
-    fontWeight: '700',
-    marginLeft: 2,
-    lineHeight: 32,
+  logoIcon: {
+    width: 36,
+    height: 36,
+    resizeMode: 'contain',
   },
   logoText: {
     fontSize: 42,
