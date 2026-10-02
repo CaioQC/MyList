@@ -19,22 +19,15 @@ export default function App() {
       <StatusBar style="light" />
 
       <View style={styles.phoneFrame}>
-        <View style={styles.topBar}>
-          <Text style={styles.time}>9:41</Text>
-
-          <View style={styles.statusIcons}>
-            <Text style={styles.signal}>▥</Text>
-            <Text style={styles.wifi}>◔</Text>
-            <Text style={styles.battery}>◍</Text>
-          </View>
-        </View>
-
         <View style={styles.logoRow}>
           <Image
             source={require('./assets/Playlist add check.png')}
             style={styles.logoIcon}
           />
-          <Text style={styles.logoText}>MyList</Text>
+          <Text style={styles.logoText}>
+            <Text style={styles.logoMy}>My</Text>
+            <Text style={styles.logoList}>List</Text>
+          </Text>
         </View>
 
         <View style={styles.inputRow}>
@@ -49,18 +42,18 @@ export default function App() {
           />
 
           <TouchableOpacity style={styles.addButton} activeOpacity={0.8}>
-            <Text style={styles.plus}>＋</Text>
+            <Image source={require('./assets/plus.png')} style={styles.plusIcon} />
           </TouchableOpacity>
         </View>
 
         <View style={styles.tabsRow}>
           <View style={styles.tab}>
-            <Text style={styles.tabLabel}>Criadas</Text>
+            <Text style={[styles.tabLabel, styles.logoMy]}>Criadas</Text>
             <Text style={styles.tabCount}>{createdCount}</Text>
           </View>
 
           <View style={styles.tab}>
-            <Text style={styles.tabLabel}>Concluídas</Text>
+            <Text style={[styles.tabLabel, styles.logoList]}>Concluídas</Text>
             <Text style={styles.tabCount}>{completedCount}</Text>
           </View>
         </View>
@@ -93,39 +86,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 10 },
     elevation: 12,
   },
-  topBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 8,
-    marginTop: 2,
-  },
-  time: {
-    color: '#fff',
-    fontSize: 24,
-    fontWeight: '700',
-    letterSpacing: -0.5,
-  },
-  statusIcons: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-  },
-  signal: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: '600',
-  },
-  wifi: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: '600',
-  },
-  battery: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: '600',
-  },
   logoRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -138,13 +98,17 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     resizeMode: 'contain',
-    tintColor: '#00d4ff',
   },
   logoText: {
     fontSize: 38,
     fontWeight: '800',
-    color: '#00d4ff',
     letterSpacing: -1,
+  },
+  logoMy: {
+    color: '#00CBCE',
+  },
+  logoList: {
+    color: '#109AE5',
   },
   inputRow: {
     flexDirection: 'row',
@@ -172,11 +136,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  plus: {
-    color: '#fff',
-    fontSize: 38,
-    fontWeight: '300',
-    lineHeight: 38,
+  plusIcon: {
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
   },
   tabsRow: {
     flexDirection: 'row',
@@ -195,7 +158,6 @@ const styles = StyleSheet.create({
   tabLabel: {
     fontSize: 22,
     fontWeight: '700',
-    color: '#00d4ff',
   },
   tabCount: {
     fontSize: 18,
