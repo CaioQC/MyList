@@ -11,8 +11,8 @@ import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   const [task, setTask] = useState('');
-  const createdCount = 5;
-  const completedCount = 2;
+  const createdCount = 0;
+  const completedCount = 0;
 
   return (
     <View style={styles.container}>
@@ -21,9 +21,10 @@ export default function App() {
       <View style={styles.phoneFrame}>
         <View style={styles.topBar}>
           <Text style={styles.time}>9:41</Text>
+
           <View style={styles.statusIcons}>
             <Text style={styles.signal}>▥</Text>
-            <Text style={styles.signal}>◔</Text>
+            <Text style={styles.wifi}>◔</Text>
             <Text style={styles.battery}>◍</Text>
           </View>
         </View>
@@ -42,7 +43,7 @@ export default function App() {
             value={task}
             onChangeText={setTask}
             placeholder="Adicione algo a sua lista"
-            placeholderTextColor="#d6d8db"
+            placeholderTextColor="#7a7d80"
             autoCapitalize="none"
             autoCorrect={false}
           />
@@ -60,7 +61,7 @@ export default function App() {
 
           <View style={styles.tab}>
             <Text style={styles.tabLabel}>Concluídas</Text>
-            <Text style={styles.tabCount}> {completedCount}</Text>
+            <Text style={styles.tabCount}>{completedCount}</Text>
           </View>
         </View>
 
@@ -73,138 +74,145 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#121619',
+    backgroundColor: '#0f1114',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 10,
   },
   phoneFrame: {
-    width: 390,
-    height: 840,
-    backgroundColor: '#1d2125',
-    borderRadius: 32,
-    paddingHorizontal: 18,
-    paddingTop: 12,
+    width: 375,
+    height: 812,
+    backgroundColor: '#1a1f24',
+    borderRadius: 40,
+    paddingHorizontal: 20,
+    paddingTop: 14,
     overflow: 'hidden',
     shadowColor: '#000',
-    shadowOpacity: 0.35,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 8 },
-    elevation: 10,
+    shadowOpacity: 0.5,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 10 },
+    elevation: 12,
   },
   topBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 12,
-    marginTop: 4,
+    paddingHorizontal: 8,
+    marginTop: 2,
   },
   time: {
     color: '#fff',
-    fontSize: 26,
+    fontSize: 24,
     fontWeight: '700',
-    letterSpacing: -0.7,
+    letterSpacing: -0.5,
   },
   statusIcons: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    gap: 6,
   },
   signal: {
     color: '#fff',
-    fontSize: 20,
-    fontWeight: '700',
+    fontSize: 18,
+    fontWeight: '600',
+  },
+  wifi: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '600',
   },
   battery: {
     color: '#fff',
-    fontSize: 20,
-    fontWeight: '700',
+    fontSize: 18,
+    fontWeight: '600',
   },
   logoRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 30,
-    marginBottom: 28,
-    gap: 8,
+    marginTop: 28,
+    marginBottom: 26,
+    gap: 4,
   },
   logoIcon: {
-    width: 36,
-    height: 36,
+    width: 32,
+    height: 32,
     resizeMode: 'contain',
+    tintColor: '#00d4ff',
   },
   logoText: {
-    fontSize: 42,
+    fontSize: 38,
     fontWeight: '800',
-    color: '#0abfe5',
-    letterSpacing: -1.2,
+    color: '#00d4ff',
+    letterSpacing: -1,
   },
   inputRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20,
-    marginBottom: 26,
+    marginTop: 16,
+    marginBottom: 24,
+    gap: 12,
   },
   input: {
     flex: 1,
-    height: 76,
-    backgroundColor: '#2d3338',
-    borderRadius: 12,
+    height: 68,
+    backgroundColor: '#2b3037',
+    borderRadius: 10,
     color: '#fff',
-    fontSize: 26,
-    paddingHorizontal: 18,
-    paddingVertical: 12,
-    borderWidth: 1,
-    borderColor: '#3b4043',
+    fontSize: 22,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderWidth: 0,
   },
   addButton: {
-    width: 80,
-    height: 76,
-    borderRadius: 12,
-    backgroundColor: '#1ea9ea',
+    width: 72,
+    height: 68,
+    borderRadius: 10,
+    backgroundColor: '#0aa8e8',
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 12,
   },
   plus: {
     color: '#fff',
-    fontSize: 42,
+    fontSize: 38,
     fontWeight: '300',
-    lineHeight: 42,
+    lineHeight: 38,
   },
   tabsRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 8,
+    marginTop: 4,
+    paddingHorizontal: 4,
   },
   tab: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-    gap: 10,
+    gap: 8,
   },
   tabLabel: {
-    fontSize: 26,
-    fontWeight: '700',
-    color: '#f5f7fa',
-  },
-  tabCount: {
     fontSize: 22,
     fontWeight: '700',
+    color: '#00d4ff',
+  },
+  tabCount: {
+    fontSize: 18,
+    fontWeight: '700',
     color: '#fff',
-    backgroundColor: '#2d3338',
-    borderRadius: 14,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    minWidth: 38,
+    backgroundColor: '#2b3037',
+    borderRadius: 12,
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    minWidth: 32,
     textAlign: 'center',
     overflow: 'hidden',
   },
   separator: {
-    marginTop: 18,
+    marginTop: 12,
     width: '100%',
     height: 1,
-    backgroundColor: '#4d5359',
+    backgroundColor: '#3d4349',
   },
 });
